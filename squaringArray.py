@@ -1,8 +1,16 @@
 class Solution:
   def makeSquares(self, arr):
     n = len(arr)
-    squares = [(arr[x] ** 2) for x in range(n)]
+    squares = [0] * n
+    left, right = 0, n - 1
     
+    for i in range(n - 1, -1, -1):
+      if abs(arr[left]) > abs(arr[right]):
+        squares[i] = arr[left] ** 2
+        left += 1
+      else:
+        squares[i] = arr[right] ** 2
+        right -= 1
     return squares
   
 if __name__ == "__main__":
